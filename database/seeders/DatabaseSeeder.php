@@ -36,16 +36,16 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Amin',
-            'email' => 'admin@example.com',
+            'email' => 'admin@komdiguru.id',
             'email_verified_at' => now(),
             'password' => bcrypt('password'), // password
             'remember_token' => Str::random(10),
         ])->attachRole(Role::where('name', 'admin')->first());
 
-        User::factory()->count(30)->create()->each(function ($user) {
-            $roles = ['admin', 'user', 'reviewer'];
-            $user->attachRole(Role::where('name', $roles[array_rand($roles)])->first());
-        });
+        // User::factory()->count(30)->create()->each(function ($user) {
+        //     $roles = ['admin', 'user', 'reviewer'];
+        //     $user->attachRole(Role::where('name', $roles[array_rand($roles)])->first());
+        // });
 
     }
 }

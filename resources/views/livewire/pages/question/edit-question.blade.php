@@ -31,7 +31,7 @@
             </div>
 
             <hr>
-            @for ($i = 0; $i < 4; $i++)
+            @for ($i = 0; $i < 5; $i++)
                 <div class="form-group">
                     <x-label :for="'option_text_' . $i" :value="__('Jawaban dengan nilai ' . ($i + 1))" />
                     <x-input :id="'option_text_' . $i" type="text" :name="'option_text[' . $i . ']'" :value="old('option_text.' . $i)"

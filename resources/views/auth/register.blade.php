@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="img-fluid p-4 shadow-light rounded-circle" style="max-width: 130px" />
+                {{-- <x-application-logo class="img-fluid p-4 shadow-light rounded-circle" style="max-width: 130px" /> --}}
             </a>
         </x-slot>
 

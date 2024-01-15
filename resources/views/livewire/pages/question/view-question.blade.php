@@ -33,7 +33,7 @@
                                         title="Edit" wire:click='editQuestion({{ $question->id }})'>
                                         <i class="fas fa-edit text-danger"></i>
                                         <button class="btn btn-sm btn-link" data-toggle="tooltip" data-placement="top"
-                                            title="Delete" wire:click='deletequestion({{ $question->id }})'>
+                                            title="Delete" wire:click='deleteQuestion({{ $question->id }})'>
                                             <i class="fas fa-trash text-danger"></i>
                                         </button>
                                     </div>

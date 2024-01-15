@@ -20,7 +20,7 @@
             </div>
             <hr>
             <p>Rentang Nilai</p>
-            @for ($i = 0; $i < 4; $i++)
+            @for ($i = 0; $i < 6; $i++)
             <div class="row">
                 <div class="form-group col-2">
                     <x-label for="score{{ $i }}">{{ __('Kategori Nilai') }}</x-label>

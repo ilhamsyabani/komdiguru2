@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         // User::factory()->count(30)->create()->each(function ($user) {
         //     $roles = ['admin', 'user', 'reviewer'];
         //     $user->attachRole(Role::where('name', $roles[array_rand($roles)])->first());
-        // });
+        // }); 
 
     }
 }

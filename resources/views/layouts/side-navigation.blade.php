@@ -44,6 +44,17 @@ $links = [
             ],
         ],
     ],
+    [ 
+        'text' => 'Tes Panel',
+        'is_multi' => true,
+        'roles' => 'user',
+        'href' => [
+            [
+                'section_text' => 'Test',
+                'section_list' => [['href' => 'survey', 'text' => 'Test']],
+            ],
+        ],
+    ],
 ];
 $navigation_links = json_decode(json_encode($links), false);
 @endphp

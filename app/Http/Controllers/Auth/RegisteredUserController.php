@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        //dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'instansion_id' => ['required'],

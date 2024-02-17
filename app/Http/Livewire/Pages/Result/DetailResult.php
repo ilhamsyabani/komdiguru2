@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Pages\Result;
 use App\Models\Result;
 use Livewire\Component;
 use Barryvdh\Snappy\Facades\SnappyPdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DetailResult extends Component
 {
@@ -26,9 +27,20 @@ class DetailResult extends Component
         $pdf->setPaper('A4');
 
         // Simpan atau tampilkan file PDF
-        $pdf->save('path/to/your-file.pdf'); // Simpan PDF ke server
+        //$pdf->save('path/to/your-file.pdf'); // Simpan PDF ke server
         // atau
         return $pdf->stream('your-file.pdf'); // Tampilkan PDF di browser
     }
+
+    // Generate PDF
+    public function createPDF($id) {
+        // retreive all records from db
+        $data = Result::find($id);
+        // share data to view
+        view()->share('result',$data);
+        $pdf = pdf::loadView('pdf_view', $data);
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
+      }
 }
 

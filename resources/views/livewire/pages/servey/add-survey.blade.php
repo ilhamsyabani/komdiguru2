@@ -2,12 +2,14 @@
     @include('livewire.utilities.alerts')
 
     <!-- Modal Popup -->
-    
 
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Test</div>
+                <div class="card-header flex content-between">
+                    <h4>Test</h4>
+                    <h4 id="timer">00:00:00</h4>
+                </div>
                 <div class="card-body">
                     <form wire:submit.prevent="addResult">
                         <div class="card-body">
@@ -73,3 +75,26 @@
     </div>
 </div>
 
+<script>
+    function startTimer(display) {
+        var timer = 0, hours, minutes, seconds;
+        setInterval(function () {
+            hours = parseInt(timer / 3600, 10);
+            minutes = parseInt((timer % 3600) / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = hours + ":" + minutes + ":" + seconds;
+
+            timer++;
+        }, 1000);
+    }
+
+    window.onload = function () {
+        var display = document.querySelector('#timer');
+        startTimer(display);
+    };
+</script>

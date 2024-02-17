@@ -31,6 +31,10 @@ $links = [
                 'section_list' => [['href' => 'view-rule', 'text' => 'Aturan pengisian']],   
             ],
             [
+                'section_text' => 'Konten',
+                'section_list' => [['href' => 'content', 'text' => 'Konten Aplikasi']],   
+            ],
+            [
                 'section_text' => 'Kategori',
                 'section_list' => [['href' => 'view-category', 'text' => 'Data  Kategori'], ['href' => 'add-category', 'text' => 'Buat Kategori']],
             ],
@@ -51,7 +55,7 @@ $links = [
         'href' => [
             [
                 'section_text' => 'Test',
-                'section_list' => [['href' => 'survey', 'text' => 'Test']],
+                'section_list' => [['href' => 'guides', 'text' => 'Test']],
             ],
         ],
     ],

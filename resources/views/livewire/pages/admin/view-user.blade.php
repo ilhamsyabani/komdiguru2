@@ -12,6 +12,31 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                <div class="flex items-center justify-between d p-4">
+                    {{-- <div class="flex">
+                        <div class="relative w-full">
+                            <label class="w-40 text-sm font-medium text-gray-900">User Type :</label>
+                            <select wire:model="instansion"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                <option value="All">All</option>
+                                @foreach ($instansions as $instansion)
+                                <option value="{{ $instansion->id }}">{{$instansion->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div> --}}
+                    <div class="flex space-x-3">
+                        <div class="flex space-x-3 items-center">
+                            <label class="w-40 text-sm font-medium text-gray-900">User Type :</label>
+                            <select wire:model="role"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                <option value="All">All</option>
+                                <option value="user">User</option>
+                                <option value="reviewer">Reviewer</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -19,6 +44,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">Role</th>
+                            <th scope="col">Intansi</th>
                             <th scope="col" width="5%">Action</th>
                         </tr>
                     </thead>
@@ -36,6 +62,13 @@
                                     @else
                                         <span class="badge badge-dark">Admin</span>
                                     @endif
+                                </td>
+                                <td>
+                                    @isset($user->instansion)
+                                        {{ $user->instansion->name }}
+                                    @else
+                                        Tidak ada
+                                    @endisset
                                 </td>
                                 <td>
                                     <div class="d-flex">

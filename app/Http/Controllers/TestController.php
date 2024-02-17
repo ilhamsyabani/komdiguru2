@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTestRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateTestRequest;
+use App\Models\Content;
 use App\Models\Rule;
 
 class TestController extends Controller
@@ -60,9 +61,14 @@ class TestController extends Controller
                 $question->options = $question->options->shuffle();
             });
         });
-        return view('survey.test', compact('categories'));
+        return view('livewire.pages.survey.test', compact('categories'));
     }
 
+    public function guides()
+    {
+        $content = Content::find(3);
+        return view('survey.guides', compact('content'));
+    }
 
     public function edit($result_id)
     {

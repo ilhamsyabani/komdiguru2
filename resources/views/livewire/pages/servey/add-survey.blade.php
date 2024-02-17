@@ -1,12 +1,14 @@
 <div>
     @include('livewire.utilities.alerts')
+
+    <!-- Modal Popup -->
+    
+
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Test</div>
-
                 <div class="card-body">
-                    
                     <form wire:submit.prevent="addResult">
                         <div class="card-body">
                             <ul class="nav nav-pills" id="myTab" role="tablist">
@@ -25,18 +27,23 @@
                                     <div class="tab-pane fade @if ($loop->first) active show @endif"
                                         id="{{ Str::slug($category->name) }}" role="tabpanel"
                                         aria-labelledby="{{ Str::slug($category->name) }}-tab">
+                                        <input type="hidden" name="category_id[]" value="{{ $category->id }}">
                                         @foreach ($category->questions as $question)
                                             <div class="card @if (!$loop->last) mb-3 @endif">
                                                 <div class="card-header">{{ $question->question_text }}</div>
                                                 <div class="card-body">
-                                                    <input type="hidden" wire:model="questions.{{ $question->id }}">
-                                                    @foreach ($question->options as $option)
+                                                    <input type="hidden" name="questions[{{ $question->id }}]"
+                                                        value="">
+                                                    {{-- Mengacak opsi --}}
+                                                    @php
+                                                        $options = $question->options->shuffle();
+                                                    @endphp
+                                                    @foreach ($options as $option)
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio"
-                                                                name="questions.{{ $question->id }}"
-                                                                wire:model="questions.{{ $question->id }}"
+                                                                name="questions[{{ $question->id }}]"
                                                                 id="option-{{ $option->id }}"
-                                                                value="{{ $option->id }}">
+                                                                value="{{ $option->id }}"@if (old("questions.$question->id") == $option->id) checked @endif>
                                                             <label class="form-check-label"
                                                                 for="option-{{ $option->id }}">
                                                                 {{ $option->option_text }}
@@ -59,9 +66,10 @@
                                 </div>
                             </div>
                         </div>
-                    </form>                    
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

@@ -7,8 +7,13 @@
         </x-slot>
 
         <x-slot name="title">
-            <h4>Login</h4>
+            <h5 class="card-title">Selamat Datang</h5>
         </x-slot>
+
+        <!-- Konten Tambahan -->
+        <div class="mt-2 mb-4">
+            <p class="card-text">Silakan masuk untuk mengakses fitur eksklusif kami.</p>
+        </div>
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -16,6 +21,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+        <!-- Form Login -->
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

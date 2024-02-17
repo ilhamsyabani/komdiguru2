@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -46,7 +47,32 @@
                     {{ $header ?? '' }}
 
                     <div class="section-body">
-                        {{ $slot ?? '' }}
+                        <div>
+                            <x-slot name="header">
+                                <div class="section-header">
+                                    <h1>Petunjuk</h1>
+                                </div>
+                            </x-slot>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>{{$content->title}}</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>{{$content->content}}</p>
+                                    This user have role
+                                    <div class="form-group row mb-0 mt-3">
+                                        <div class="col-md-6">
+                                            <a href="{{Route('survey')}}" class="btn btn-primary" name="aksi" value="simpan">
+                                                Mulai Test
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>

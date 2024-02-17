@@ -5,12 +5,11 @@ use App\Http\Livewire\Pages\Admin\ViewUser;
 use App\Http\Livewire\Pages\Category\AddCategory;
 use App\Http\Livewire\Pages\Category\EditCategory;
 use App\Http\Livewire\Pages\Category\ViewCategory;
+use App\Http\Livewire\Pages\Content\EditContent;
+use App\Http\Livewire\Pages\Content\ShowContent;
 use App\Http\Livewire\Pages\Dashboard;
 use App\Http\Livewire\Pages\Instansion\AddInstansion;
 use App\Http\Livewire\Pages\Instansion\ViewInstansion;
-use App\Http\Livewire\Pages\Option\AddOption;
-use App\Http\Livewire\Pages\Option\EditOption;
-use App\Http\Livewire\Pages\Option\ViewOption;
 use App\Http\Livewire\Pages\Question\AddQuestion;
 use App\Http\Livewire\Pages\Question\EditQuestion;
 use App\Http\Livewire\Pages\Question\ViewQuestion;
@@ -19,7 +18,6 @@ use App\Http\Livewire\Pages\Result\ViewResult;
 use App\Http\Livewire\Pages\Rule\EditRule;
 use App\Http\Livewire\Pages\Rule\ViewRule;
 use App\Http\Livewire\Pages\Servey\AddSurvey;
-use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -69,6 +67,7 @@ Route::get('/admin/edit-rule/{ruleId}', EditRule::class)->middleware(['auth', 'v
 Route::get('/admin/view-question', ViewQuestion::class)->middleware(['auth', 'verified'])->name('view-question');
 Route::get('/admin/add-question', AddQuestion::class)->middleware(['auth', 'verified'])->name('add-question');
 Route::get('/admin/edit-question/{questionId}', EditQuestion::class)->middleware(['auth', 'verified'])->name('edit-question');
+Route::get('/user/guides', [\App\Http\Controllers\TestController::class, 'guides'])->middleware(['auth', 'verified'])->name('guides');
 Route::get('/user/test', AddSurvey::class)->middleware(['auth', 'verified'])->name('survey');
 Route::post('/survey/test', [\App\Http\Controllers\TestController::class, 'store'])->name('client.test.store');
 Route::put('/survey/test/{result}', [\App\Http\Controllers\TestController::class, 'update'])->name('client.test.update');
@@ -77,6 +76,7 @@ Route::get('/survey/test/{result_id}', [\App\Http\Controllers\TestController::cl
 Route::get('/survey/results/{result_id}', [\App\Http\Controllers\ResultController::class, 'show'])->name('survey.results');
 Route::get('/result/{result}', DetailResult::class)->middleware(['auth', 'verified'])->name('detail.result');
 Route::get('/admin/result', ViewResult::class)->middleware(['auth', 'verified'])->name('result');
-
+Route::get('/admin/content', ShowContent::class)->middleware(['auth', 'verified'])->name('content');
+Route::get('/admin/edit-content/{contentId}', EditContent::class)->middleware(['auth', 'verified'])->name('edit-content');
 
 require __DIR__ . '/auth.php';

@@ -50,6 +50,39 @@
                                             <div class="card-header">{{ $question->question_text }}</div>
                                             <div class="card-body">
                                                 <input type="hidden" name="questions[{{ $question->id }}]" value="">
+                                                {{-- Mengacak opsi --}}
+                                                @php
+                                                    $optionsx = $question->options->shuffle();
+                                                    {{ $optionsx }}
+                                                @endphp
+                                                @foreach ($optionsx as $option)
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="questions[{{ $question->id }}]"
+                                                            id="option-{{ $option->id }}"
+                                                            value="{{ $option->id }}"@if (old("questions.$question->id") == $option->id) checked @endif>
+                                                        <label class="form-check-label" for="option-{{ $option->id }}">
+                                                            {{ $option->option_text }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+                        
+                        {{-- <div class="tab-content" id="myTabContent">
+                            @foreach ($categories as $category)
+                                <div class="tab-pane fade @if ($loop->first) active show @endif"
+                                    id="{{ Str::slug($category->name) }}" role="tabpanel"
+                                    aria-labelledby="{{ Str::slug($category->name) }}-tab">
+                                    <input type="hidden" name="category_id[]" value="{{ $category->id }}">
+                                    @foreach ($category->questions as $question)
+                                        <div class="card @if (!$loop->last) mb-3 @endif">
+                                            <div class="card-header">{{ $question->question_text }}</div>
+                                            <div class="card-body">
+                                                <input type="hidden" name="questions[{{ $question->id }}]" value="">
                                                 @foreach ($question->options as $option)
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="questions[{{ $question->id }}]"
@@ -65,7 +98,7 @@
                                     @endforeach
                                 </div>
                             @endforeach
-                        </div>
+                        </div> --}}
                         <div class="form-group row mb-0 mt-3">
                             <div class="col-md-6">
                                 {{-- <button type="submit" class="btn btn-primary" name="aksi" value="simpan">

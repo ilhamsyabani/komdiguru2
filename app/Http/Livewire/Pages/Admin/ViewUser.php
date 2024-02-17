@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Pages\Admin;
 
+use App\Models\Instansion;
+use App\Models\Role;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -9,14 +11,40 @@ use Livewire\WithPagination;
 class ViewUser extends Component
 {
     use WithPagination;
+    public $search = '';
+    public $role = 'All';
+    public $instansion = '';
 
     protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
-        return view('livewire.pages.admin.view-user', [
-            'users' => User::paginate(10),
-        ]);
+        // Query berdasarkan peran pengguna dan instance yang terkait
+        $usersQuery = User::query();
+
+        // Filter berdasarkan peran pengguna
+        if ($this->role !== 'All') {
+            $usersQuery->whereHas('roles', function ($query) {
+                $query->where('name', $this->role);
+            });
+        }
+
+        // // Filter berdasarkan instance yang terkait
+        // if ($this->instansion !== 'All') {
+        //     $usersQuery->whereHas('instansion', function ($query) {
+        //         $query->where('name', $this->instansion);
+        //     });
+        // }
+
+
+        // Ambil data pengguna yang dipaginasi
+        $users = $usersQuery->paginate(10);
+
+        // Ambil daftar instance untuk dropdown filter
+        $instansions = Instansion::all();
+
+        // Kirim data pengguna dan daftar instance ke tampilan
+        return view('livewire.pages.admin.view-user', compact('users', 'instansions'));
     }
 
     public function mount()
@@ -25,6 +53,8 @@ class ViewUser extends Component
             return redirect()->route('dashboard');
         }
     }
+
+
 
     public function demoteUser($id)
     {

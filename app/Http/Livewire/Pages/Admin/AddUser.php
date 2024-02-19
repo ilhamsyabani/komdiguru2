@@ -43,6 +43,7 @@ class AddUser extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'instansion_id' => $this->instansion_id,
+            'email_verified_at'=> Now(),
         ]);
 
         $user->attachRole('reviewer');

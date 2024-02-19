@@ -29,10 +29,10 @@ class AddInstansion extends Component
             'name' => 'required|min:3',
             'address' => 'required|unique:instansions',
         ]);
-
+        dd($this);
         $instansion = Instansion::create([
             'name' => $this->name,
-            'address' => $this->address, // Fix: Use $this->address instead of $this->email
+            'address' => $this->address,
         ]);
 
         $this->resetInput();

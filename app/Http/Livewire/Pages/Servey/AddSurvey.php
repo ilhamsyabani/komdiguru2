@@ -10,6 +10,7 @@ class AddSurvey extends Component
     public $questions = [];
     public $option_id = [];
     public $category_result_id =[];
+    public $category_id=[];
     
     
     public function render()
@@ -19,10 +20,9 @@ class AddSurvey extends Component
         ]);
     }
 
-    public function addResult()
+    public function addResult($category_id)
     {
        
-        
     }
 
 }

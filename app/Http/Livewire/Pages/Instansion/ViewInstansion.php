@@ -38,7 +38,7 @@ class ViewInstansion extends Component
 
         try {
             $instansion->update(['isActive' => !$instansion->isActive]);
-            session()->flash('success', 'instansion ' . ($instansion->isActive ? 'disabled' : 'enabled') . ' successfully.');
+            session()->flash('success', 'instansion ' . ($instansion->isActive ? '1' : '0') . ' successfully.');
         } catch (\Exception $e) {
             session()->flash('error', 'Error updating instansion status.');
         }

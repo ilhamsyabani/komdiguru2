@@ -20,32 +20,35 @@ use App\Models\Rule;
 
 class TestController extends Controller
 {
+
     public function index()
     {
         $rule = Rule::find(1);
         $user = auth()->user();
         $results = Result::where('user_id', $user->id)->get();
-        $latestPost = $results->sortByDesc('updated_at')->first();
-        $today = now();
-        $interval = $today->diff($latestPost->updated_at);
 
-        $instansi = auth()->user()->instansion->isActive;
+        $latestPost = $results->filter(function ($item) {
+            return $item->updated_at !== null;
+        })->sortByDesc('updated_at')->first();
 
-        if(!$instansi ){
-            
+        $interval = null;
+        if ($latestPost) {
+            $today = now();
+            $interval = $today->diff($latestPost->updated_at);
+        }
+
+        $instansi = auth()->user()->instansion;
+
+        if (!$instansi || !$instansi->isActive) {
             return view('survey.waiting');
         }
 
-        if ($rule->status) {
-           
+        if ($rule->status && $results->count() >= $rule->filling_limit) {
+            return view('survey.waiting');
+        }
 
-            if ($results->count() >= $rule->filling_limit) {
-                return view('survey.waiting');
-            }
-
-            if ($interval->days <= $rule->alowed_time) {
-                return view('survey.waiting');
-            }
+        if ($interval && $interval->days <= $rule->alowed_time) {
+            return view('survey.waiting');
         }
 
         // Additional logic for roles (commented out for simplicity)
@@ -61,8 +64,9 @@ class TestController extends Controller
                 $question->options = $question->options->shuffle();
             });
         });
-        return view('livewire.pages.survey.test', compact('categories'));
+        return view('survey.test', compact('categories'));
     }
+
 
     public function guides()
     {

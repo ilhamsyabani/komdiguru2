@@ -62,7 +62,7 @@
                                     This user have role
                                     <div class="form-group row mb-0 mt-3">
                                         <div class="col-md-6">
-                                            <a href="{{Route('survey')}}" class="btn btn-primary" name="aksi" value="simpan">
+                                            <a href="{{Route('test')}}" class="btn btn-primary" name="aksi" value="simpan">
                                                 Mulai Test
                                             </a>
                                         </div>

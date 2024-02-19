@@ -26,6 +26,7 @@
                 <x-input id="address" type="text" name="address" :value="old('address')" wire:model='address' />
             </div>
 
+            <x-input id="status" type="hidden" name="status" :value="old('status')" wire:model="status" value="Active" />
             <x-button type='submit' wire:click='addInstansion'>
                 {{ __('Tambah') }}
             </x-button>

@@ -41,7 +41,7 @@ class AddQuestion extends Component
             Option::create([
                 'question_id' => $question->id,
                 'option_text' => $value,
-                'points' => $key += 1,
+                'points' => $key,
             ]);
     
         }

@@ -72,7 +72,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        @if ($user->roles->first()->display_name == 'User')
+                                        {{-- @if ($user->roles->first()->display_name == 'User')
                                             <button class="btn btn-sm btn-link" data-toggle="tooltip"
                                                 data-placement="top" title="Promote to Admin"
                                                 wire:click='promoteUser({{ $user->id }})'>
@@ -84,7 +84,7 @@
                                                 wire:click='demoteUser({{ $user->id }})'>
                                                 <i class="fas fa-user text-info"></i>
                                             </button>
-                                        @endif
+                                        @endif --}}
                                         <button class="btn btn-sm btn-link" data-toggle="tooltip" data-placement="top"
                                             title="Delete" wire:click='deleteUser({{ $user->id }})'>
                                             <i class="fas fa-trash text-danger"></i>

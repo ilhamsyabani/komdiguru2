@@ -46,6 +46,8 @@ class AddUser extends Component
             'email_verified_at' => now(),
         ]);
 
+        dd($user);
+
         $user->attachRole('reviewer');
 
         $this->resetInput();

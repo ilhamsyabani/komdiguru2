@@ -40,7 +40,7 @@ class TestController extends Controller
         $instansi = auth()->user()->instansion;
 
         if (!$instansi || !$instansi->isActive) {
-            return view('survey.waiting');
+            return view('survey.notactive');
         }
 
         if ($rule->status && $results->count() >= $rule->filling_limit) {

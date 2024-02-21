@@ -33,7 +33,7 @@
                                         @php
                                             $options = $question->options->shuffle();
                                         @endphp
-                                        @foreach ($question->options as $option)
+                                        @foreach ($options as $option)
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio"
                                                     name="questions[{{ $question->id }}]"

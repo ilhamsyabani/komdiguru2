@@ -26,8 +26,8 @@
                         @foreach ($rules as $rule)
                             <tr>
                                 <th>1</th>
-                                <td>{{ $rule->filling_limit }}</td>
-                                <td>{{ $rule->alowed_time }}</td>
+                                <td>{{ $rule->filling_limit }} Kali</td>
+                                <td>{{ $rule->alowed_time }} Hari</td>
                                 <td><x-button wire:click="changeStatus({{ $rule->id }})">{{ $rule->status ? 'active' : 'nonactive' }}</x-button></td>
                                 <td>
                                     <div class="d-flex">

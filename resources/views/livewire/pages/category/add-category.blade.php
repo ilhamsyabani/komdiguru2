@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group col-2">
                     <x-label for="min{{ $i }}">{{ __('Nilai Minimal') }}</x-label>
-                    <x-input type="number" class="form-control" id="min{{ $i }}" placeholder="{{ __('0') }}" name="min[]" value="{{ old('min.' . $i) }}" wire:model="min.{{ $i }}" />
+                    <x-input type="number" class="form-control" id="min{{ $i }}" placeholder="{{ __('0') }}" name="min[]" value="{{ old('min.' . $i) ?? "0" }}" wire:model="min.{{ $i }}" />
                 </div>
                 <div class="form-group col-2">
                     <x-label for="max{{ $i }}">{{ __('Nilai Maksimal') }}</x-label>
-                    <x-input type="number" class="form-control" id="max{{ $i }}" placeholder="{{ __('0') }}" name="max[]" value="{{ old('max.' . $i) }}" wire:model="max.{{ $i }}" />
+                    <x-input type="number" class="form-control" id="max{{ $i }}" placeholder="{{ __('0') }}" name="max[]" value="{{ old('max.' . $i) ?? '0' }}" wire:model="max.{{ $i }}" />
                 </div>
                 <div class="form-group col-6">
                     <x-label for="feedback{{ $i }}">{{ __('Feedback') }}</x-label>

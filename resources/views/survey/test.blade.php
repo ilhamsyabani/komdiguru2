@@ -12,7 +12,7 @@
 
 
         <div class="section-body">
-            <form method="POST" action="{{ route('client.test.store') }}">
+            <form method="POST" action="{{ route('test.store') }}">
                 @csrf
                 <ul class="nav nav-pills" id="myTab" role="tablist">
                     @foreach ($categories as $category)
@@ -59,9 +59,9 @@
                 </div>
                 <div class="form-group row mb-0 mt-3">
                     <div class="col-md-6">
-                        {{-- <button type="submit" class="btn btn-primary" name="aksi" value="simpan">
+                        <button type="submit" class="btn btn-primary" name="aksi" value="simpan">
                                     Simpan
-                                </button> --}}
+                                </button>
                         <button type="submit" class="btn btn-primary" name="aksi" value="kirim">
                             Kirim Semua Hasil
                         </button>

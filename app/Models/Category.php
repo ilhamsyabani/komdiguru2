@@ -30,6 +30,10 @@ class Category extends Model
         return $this->hasMany(Result::class);
     }
 
+    public function ranges(){
+        return $this->hasMany(Range::class);
+    }
+
 
     
 }

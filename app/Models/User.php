@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'instansion_id',
     ];
 
     /**
@@ -46,6 +47,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function instansion() {
         return $this->belongsTo(Instansion::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
 
     public function userResults()

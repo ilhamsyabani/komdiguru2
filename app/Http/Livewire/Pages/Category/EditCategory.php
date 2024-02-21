@@ -22,7 +22,7 @@ class EditCategory extends Component
         }
 
         $this->categoryId = $categoryId;
-
+ 
         $category = Category::find($categoryId);
 
         if ($category) {
@@ -53,8 +53,8 @@ class EditCategory extends Component
             'feedback.*' => 'required|string',
         ]);
 
-        $category = Category::find($this->categoryId);
 
+        $category = Category::find($this->categoryId);
         if ($category) {
             $category->update([
                 'name' => $this->name,

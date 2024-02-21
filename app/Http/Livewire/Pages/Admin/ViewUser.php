@@ -59,7 +59,7 @@ class ViewUser extends Component
     public function demoteUser($id)
     {
         $user = User::find($id);
-        $user->detachRole('admin');
+        $user->detachRole('reviewer');
         $user->attachRole('user');
         session()->flash('success', $user->name . ' has been demoted to user');
     }

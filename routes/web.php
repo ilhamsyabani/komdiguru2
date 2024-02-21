@@ -69,8 +69,8 @@ Route::get('/admin/add-question', AddQuestion::class)->middleware(['auth', 'veri
 Route::get('/admin/edit-question/{questionId}', EditQuestion::class)->middleware(['auth', 'verified'])->name('edit-question');
 Route::get('/user/guides', [\App\Http\Controllers\TestController::class, 'guides'])->middleware(['auth', 'verified'])->name('guides');
 Route::get('/user/test', AddSurvey::class)->middleware(['auth', 'verified'])->name('survey');
-Route::post('/survey/test', [\App\Http\Controllers\TestController::class, 'store'])->name('client.test.store');
-Route::put('/survey/test/{result}', [\App\Http\Controllers\TestController::class, 'update'])->name('client.test.update');
+Route::post('/survey/test', [\App\Http\Controllers\TestController::class, 'store'])->name('test.store');
+Route::put('/survey/test/{result}', [\App\Http\Controllers\TestController::class, 'update'])->name('test.update');
 Route::get('/survey/test', [\App\Http\Controllers\TestController::class, 'index'])->name('test');
 Route::get('/survey/test/{result_id}', [\App\Http\Controllers\TestController::class, 'edit'])->name('survey.edit');
 Route::get('/survey/results/{result_id}', [\App\Http\Controllers\ResultController::class, 'show'])->name('survey.results');

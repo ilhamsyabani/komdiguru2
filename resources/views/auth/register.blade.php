@@ -23,9 +23,9 @@
             </div>
 
             <div class="form-group">
-                <x-label for="instansion_id" :value="__('Kategori Pertanyaan')" />
-                <select wire:model="instansion_id" id="instansion_id" class="form-control selectric" name="instansion_id">
-                    <option>Silahkan Pilih Instansi</option>
+                <x-label for="instansion_id" :value="__('Nama Isntansi')" />
+                <select id="instansion_id" class="form-control selectric" name="instansion_id">
+                    <option value="" >Silahkan Pilih Instansi</option>
                     @foreach ($instansions as $instansion)
                         <option value="{{ $instansion->id }}" {{ old('instansion_id') == $instansion->id ? 'selected' : '' }}>
                             {{ $instansion->name }}

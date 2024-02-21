@@ -56,9 +56,9 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @if ($user->roles->first()->display_name == 'User')
-                                        <span class="badge badge-primary">User</span>
+                                        <span class="badge badge-primary">{{ $user->roles->first()->display_name }}</span>
                                     @elseif ($user->roles->first()->display_name == 'Reviewer')
-                                        <span class="badge badge-info">Reviewer</span>
+                                        <span class="badge badge-info">{{ $user->roles->first()->display_name  }}</span>
                                     @else
                                         <span class="badge badge-dark">Admin</span>
                                     @endif
